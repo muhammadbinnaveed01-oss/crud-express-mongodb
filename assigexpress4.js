@@ -8,8 +8,10 @@ const app = express();
 
 const port= process.env.PORT
 const host= process.env.HOST
-app.use("/user",routes);
+
 app.use(express.json())
+app.use(express.static(path.resolve(__dirname,process.env.PUBLIC_FILE)));
+app.use("/user",routes);
 
 
 mongoose.connect(process.env.MONGO_URI )
